@@ -3,12 +3,12 @@
 
 class MetierDAO {
 
-    private $bbd;
+    private $bdd;
     function FindAllMetier() {
 
-        $this->bbd = new Connexion();
+        $this->bdd = new Connexion();
         $ListeMetier = [];
-        $bdd = $this->bbd->getDb();
+        $bdd = $this->bdd->getDb();
         
         $reponse = $bdd->query('SELECT * FROM Metier');
 

@@ -6,7 +6,6 @@ if(!isset($_SESSION['partenaire']))
     exit();
 }
 require_once(dirname(__FILE__).'/config/global.php');
-require_once(REP_DIR.'/OffreRepository.php');
 require_once(REP_DIR.'/FunctionAffichage.php');
 spl_autoload_register();
 

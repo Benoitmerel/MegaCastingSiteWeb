@@ -2,12 +2,12 @@
 
 class OffreDAO {
 
-     private $bbd;
+     private $bdd;
     function FindAllOffre() {
 
-        $this->bbd = new Connexion();
+        $this->bdd = new Connexion();
         $ListeOffres = [];
-        $bdd = $this->bbd->getDb();
+        $bdd = $this->bdd->getDb();
         $reponse = $bdd->query('SELECT Offres.Identifiant, Offres.Intitule, Offres.Reference, Offres.DescriptionPoste, Offres.DescriptionProfil, Offres.NombreDePostes, Offres.DateDebutPublication, Offres.DureedeDiffusion, Clients.Nom, Offres.Localisation, Metier.NomMetier, TypesDeContrat.NomContrat, DomaineDeMetier.NomDomaine FROM Offres INNER JOIN Clients ON Offres.IdentifiantClients = Clients.Identifiant INNER JOIN Metier ON Offres.IdentifiantMetier = Metier.Identifiant INNER JOIN TypesDeContrat ON Offres.IdentifiantTypesContrat = TypesDeContrat.Identifiant INNER JOIN DomaineDeMetier on DomaineDeMetier.Identifiant = Metier.IdentifiantDomaine');
 
         while ($donnees = $reponse->fetch()) {
@@ -22,7 +22,8 @@ class OffreDAO {
             $Offre->getMetier()->setDomaineMetier($domaineDeMetier)->setNomDomaine($donnees['NomDomaine']);
             $Offre->setIntitule($donnees["Intitule"]);
             $Offre->setLocalisation($donnees["Localisation"]);
-            $Offre->setReference($donnees["Intitule"]);
+            $Offre->setReference($donnees["Reference"]);
+            $Offre->setNombreDePostes($donnees["NombreDePostes"]);
             $Offre->setDescriptionPoste($donnees["DescriptionPoste"]);
             $Offre->setDureeDeDiffusion($donnees["DureedeDiffusion"]);
             $Offre->setDescriptionProfil($donnees["DescriptionProfil"]);

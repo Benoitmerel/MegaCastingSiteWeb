@@ -2,13 +2,13 @@
 
 class TypesDeContratDAO {
 
-    private $bbd;
+    private $bdd;
 
     function FindAllContrat() {
 
         $ListeContrat = [];
-        $this->bbd = new Connexion();
-        $bdd = $this->bbd->getDb();
+        $this->bdd = new Connexion();
+        $bdd = $this->bdd->getDb();
         $reponse = $bdd->query('SELECT * FROM TypesDeContrat');
 
         while ($donnees = $reponse->fetch()) {

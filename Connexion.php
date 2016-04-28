@@ -1,11 +1,26 @@
 <?php
 session_start();
 require_once(dirname(__FILE__).'/config/global.php');
-require_once(REP_DIR.'/PartenaireRepository.php');
 require_once(REP_DIR.'/FunctionAffichage.php');
 
+function my_autoloader($class)
+{
+     $classMap = array(
+            'lib\\models\\',
+            'lib\\Repository\\',
+        );
+        foreach ($classMap as $location) {
+            if (file_exists(__DIR__ . '\\' . $location . $class . '.php')) {
+                require_once(__DIR__ . '\\' . $location . $class . '.php');
+            }
+        }
+}
+
+spl_autoload_register('my_autoloader');
 
 $Verif = True;
+$PartenaireDAO = new PartenaireDAO();
+$Partenaire = new Partenaire();
 
 if ($_POST) {
     
@@ -21,8 +36,9 @@ if ($_POST) {
     if ($Verif == True) {
         $MotDePasseSHA1 = sha1($_POST['Password']);
         $MotDePasseSHA1Maj = mb_strtoupper($MotDePasseSHA1);
-        $Partenaire = FindPartenaire($_POST['Login'],$MotDePasseSHA1Maj);
-        if ($Partenaire != 0) {
+        $Partenaire = $PartenaireDAO->FindPartenaire($_POST['Login'],$MotDePasseSHA1Maj);
+               
+        if ($Partenaire != null) {
             $_SESSION['partenaire'] = 'ok';
             header('Location: Flux.php');
             exit();

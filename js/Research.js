@@ -59,7 +59,7 @@ function research(critere, id) {
 
         if (Offre[key][j] === critere)
         {
-//            $("#panel_" + key).attr('style', 'display: block');
+
         }
         else
         {

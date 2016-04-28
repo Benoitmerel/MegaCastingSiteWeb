@@ -2,13 +2,13 @@
 
 class DomaineDeMetierDAO {
 
-    private $bbd;
+    private $bdd;
 
     function FindAllDomaine() {
 
         $ListeDomaine = [];
-         $this->bbd = new Connexion();
-         $bdd = $this->bbd->getDb();
+         $this->bdd = new Connexion();
+         $bdd = $this->bdd->getDb();
         $reponse = $bdd->query('SELECT * FROM DomaineDeMetier');
 
         while ($donnees = $reponse->fetch()) {
