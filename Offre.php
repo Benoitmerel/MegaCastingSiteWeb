@@ -1,12 +1,8 @@
 <?php
-session_start();
-if(!isset($_SESSION['partenaire']))
-{
-    header('Location: index.php');
-    exit();
-}
-require_once(dirname(__FILE__).'/config/global.php');
-require_once(REP_DIR.'/FunctionAffichage.php');
+
+require_once(dirname(__FILE__) . '/config/global.php');
+require_once(REP_DIR . '/FunctionAffichage.php');
+
 function my_autoloader($class)
 {
      $classMap = array(
@@ -22,14 +18,16 @@ function my_autoloader($class)
 
 spl_autoload_register('my_autoloader');
 
+if (!empty($_GET['id'])) {
+    $OffreDAO = new OffreDAO();
 
-
-$OffreDAO = new OffreDAO();
-$ListResearch = $OffreDAO->FindAllOffre();
-
-
-
-require WEB_DIR.'ViewFlux.php';
+    $ListResearch = $OffreDAO->FindOffreWithId($_GET['id']);
+    
+    require WEB_DIR . 'ViewOffre.php';
+}
+else{
+    require WEB_DIR . 'ViewErreur.php';
+}
 
 
 

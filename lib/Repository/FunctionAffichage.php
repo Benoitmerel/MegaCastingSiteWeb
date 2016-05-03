@@ -31,15 +31,15 @@ function Header_HTML()
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Mega Casting</a>
+                        <a class="navbar-brand" href="index.php">MegaCasting</a>
                     </div>
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="Index.php">Accueil</a></li>
+                            <li class="active"><a class='glyphicon glyphicon-home' href="index.php"></a></li>
                             <li><a href="About.php">A propos</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="Connexion.php">Se connecter</a></li>
+                            <li><a href="Connexion.php"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
                         </ul>
                     </div>
                     
@@ -80,11 +80,16 @@ function Header_HTML_Connecte()
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Mega Casting</a>
+                        <a class="navbar-brand" href="index.php">MegaCasting</a>
                     </div>
                     <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a class='glyphicon glyphicon-home' href="AccueilPartenaire.php"></a></li>
+                            <li><a href="Profil.php">Profil</a></li>
+                            <li><a href="Flux.php" target=_blank>Flux</a></li>
+                        </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a class="active" href="Deconnexion.php">Se deconnecter</a></li>
+                            <li><a class="active" href="Deconnexion.php"><span class="glyphicon glyphicon-log-out"></span> Se deconnecter</a></li>
                         </ul>
                     </div>
                     

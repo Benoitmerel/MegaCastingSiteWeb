@@ -39,8 +39,8 @@ if ($_POST) {
         $Partenaire = $PartenaireDAO->FindPartenaire($_POST['Login'],$MotDePasseSHA1Maj);
                
         if ($Partenaire != null) {
-            $_SESSION['partenaire'] = 'ok';
-            header('Location: Flux.php');
+            $_SESSION['partenaire'] = (int)$Partenaire->getIdentifiant();
+            header('Location: AccueilPartenaire.php');
             exit();
         }else{
             $erreur = 'Le Nom et le Mot de passe ne correspondent pas.';
